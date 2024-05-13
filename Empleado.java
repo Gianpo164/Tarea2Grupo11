@@ -5,7 +5,7 @@ public class Empleado implements Invitable{
     private String apellidos;
     private String nombre;
     private String correo;
-    private Boolean invitado = false;
+    public boolean invitado = false;
 
     public Empleado (String ID, String APELLIDOS, String NOMBRE, String CORREO) {
         id = ID;
@@ -13,13 +13,16 @@ public class Empleado implements Invitable{
         nombre = NOMBRE;
         correo = CORREO;
     }
-
-    @Override
-    public void invitar(Invitacion invi) {
-        invitado = true;
+    public String getId() {
+        return id;
     }
     @Override
-    public Boolean getInvitado() {
+    public void invitar(Invitacion invi) {
+        if (invi != null)
+            invitado = true;
+    }
+    @Override
+    public boolean getInvitado() {
         return invitado;
     }
 }
