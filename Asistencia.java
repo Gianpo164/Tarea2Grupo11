@@ -7,4 +7,7 @@ public class Asistencia {
     public Asistencia(Empleado e) {
         persona = e;
     }
+    public Empleado getEmpleado() {
+        return empleado;
+    }
 }
