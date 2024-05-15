@@ -11,6 +11,7 @@ public class Departamento implements Invitable {
     }
     public void addEmpleado(Empleado e) {
         Empleados.add(e);
+        e.setDepartamento(nombre);
     }
     public Empleado getEmpleado(String ID) {
         Empleado aux = null;

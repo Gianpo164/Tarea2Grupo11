@@ -5,6 +5,7 @@ public class Empleado implements Invitable{
     private String apellidos;
     private String nombre;
     private String correo;
+    private String departamento;
     public boolean invitado = false;
 
     public Empleado (String ID, String APELLIDOS, String NOMBRE, String CORREO) {
@@ -13,6 +14,11 @@ public class Empleado implements Invitable{
         nombre = NOMBRE;
         correo = CORREO;
     }
+    public void setDepartamento(String d){
+        departamento = d;
+    }
+    public String getDepartamento(){ return departamento; }
+
     public String getId() {
         return id;
     }
