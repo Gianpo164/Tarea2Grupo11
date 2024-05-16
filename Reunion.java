@@ -128,16 +128,10 @@ public abstract class Reunion {
     }
   
     /**
-     * Finaliza la reunión, ya no se contabiliza ningún tipo de asistencia
+     * Finaliza la reunión y crea el informe correspondiente
      */
     public void finalizar(){
         horaFin = Instant.now();
-    }
-
-    /**
-     * Creación del informe corresponiente a esta reunión
-     */
-    public void crearInforme(){
         String pattern = "yyyy-MM-dd_hh-mm-ss";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         String horaPrevista = simpleDateFormat.format(Date.from(Instant.now()));
