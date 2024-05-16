@@ -11,8 +11,8 @@ public abstract class Reunion {
     private Date fecha;
     private Instant horaPrevista;
     private Duration duracionPrevista;
-    private Instant horaInicio;
-    private Instant horaFin;
+    private Instant horaInicio = Instant.MAX;
+    private Instant horaFin = Instant.MAX;
     private String tipoDeReunion;
     private ArrayList<Empleado> listaDeInvitados;
     private ArrayList<Asistencia> listaDeAsistencias;
@@ -43,11 +43,12 @@ public abstract class Reunion {
         }
     }
     public void asistirReunion(Empleado e){
-        if (e.invitado && !Instant.now().isAfter(horaInicio) && !listaDeEmpleadoAsistentes.contains(e)) {
+        if (Instant.now().isAfter(horaFin)){
+        }else if (e.invitado && !Instant.now().isAfter(horaInicio) && !listaDeEmpleadoAsistentes.contains(e)) {
             Asistencia a = new Asistencia(e);
             listaDeEmpleadoAsistentes.add(e);
             listaDeAsistencias.add(a);
-        } else if (e.invitado && !listaDeEmpleadoAsistentes.contains(e)) {
+        }else if (e.invitado && !listaDeEmpleadoAsistentes.contains(e)) {
             Retraso r = new Retraso(e);
             listaDeEmpleadoAsistentes.add(e);
             listaDeRetraso.add(r);
