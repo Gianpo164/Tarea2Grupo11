@@ -21,7 +21,16 @@ public class Empleado implements Invitable{
      * @param NOMBRE Nombre del empleado
      * @param CORREO Correo del empleado
      */
-    public Empleado (String ID, String APELLIDOS, String NOMBRE, String CORREO) {
+    public Empleado (String ID, String APELLIDOS, String NOMBRE, String CORREO) throws FaltaParametroException {
+        if (ID == null) {
+            throw new FaltaParametroException("Falta ID");
+        } else if (APELLIDOS == null) {
+            throw new FaltaParametroException("Falta apellidos");
+        } else if (NOMBRE == null) {
+            throw new FaltaParametroException("Falta nombre");
+        } else if (CORREO == null) {
+            throw new FaltaParametroException("Falta correo");
+        }
         id = ID;
         apellidos = APELLIDOS;
         nombre = NOMBRE;
