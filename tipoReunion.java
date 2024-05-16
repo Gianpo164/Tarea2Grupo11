@@ -7,13 +7,21 @@ public enum tipoReunion {
     /**
      * Reunión de tipo tecnica
      */
-    TECNICA,
+    TECNICA("Tecnica"),
     /**
      * Reunión de tipo marketing
      */
-    MARKETING,
+    MARKETING("Marketing"),
     /**
      * Reunión de otro tipo
      */
-    OTRO,
+    OTRO("Otro");
+
+    private final String tipo;
+
+    tipoReunion(String tipo){
+        this.tipo = tipo;
+    }
+    public String getTipo(){ return tipo; }
+
 }
