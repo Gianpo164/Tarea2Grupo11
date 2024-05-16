@@ -31,6 +31,10 @@ public abstract class Reunion {
         horaPrevista = horaP;
         duracionPrevista = duracionP;
         listaDeInvitados = listaDeE;
+        listaDeAsistencias = new ArrayList<>();
+        listaDeRetraso = new ArrayList<>();
+        listaDeAusencias = new ArrayList<>();
+        listaDeEmpleadoAsistentes = new ArrayList<>();
         Invitacion invitacion = new Invitacion(horaP);
         tipoDeReunion = tipo;
         for (Empleado e : listaDeE){
@@ -65,7 +69,8 @@ public abstract class Reunion {
     public ArrayList obtenerAusencias(){
         listaDeAusencias.clear();
         listaDeAusencias.addAll(listaDeInvitados);
-        return listaDeAsistencias;
+        listaDeAusencias.removeAll(listaDeEmpleadoAsistentes);
+        return listaDeAusencias;
     }
   
     /**
@@ -81,7 +86,7 @@ public abstract class Reunion {
      * @return Cantidad de asistentes
      */
     public int obtenerTotalAsistencia(){
-        return obtenerAsistencias().size();
+        return obtenerAsistencias().size() + obtenerRetrasos().size();
     }
   
     /**
@@ -89,14 +94,14 @@ public abstract class Reunion {
      * @return Porcentaje de asistencia
      */
     public float obtenerPorcentajeAsistencia(){
-        return (((obtenerAsistencias().size() + obtenerRetrasos().size()) / listaDeInvitados.size()) * 100);
+        return (((float)(obtenerAsistencias().size() + obtenerRetrasos().size()) / (float)listaDeInvitados.size()) * (float)100);
     }
   
     /**
      * Inicia la reunión, a partir de este punto las asisencias se consideran retrasos
      */
     public float calcularTiempoReal(){
-        return horaInicio.until(horaFin, ChronoUnit.SECONDS);//Posible modificacion para entregar informacion relevante al informe
+        return (float)horaInicio.until(horaFin, ChronoUnit.SECONDS);//Posible modificacion para entregar informacion relevante al informe
     }
   
     /**
