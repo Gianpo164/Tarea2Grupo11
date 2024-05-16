@@ -1,5 +1,6 @@
 package org.example;
 
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -131,6 +132,9 @@ public abstract class Reunion {
      */
     public void finalizar(){
         horaFin = Instant.now();
+        Informe informe = new Informe();
+        informe.crearInforme(this.fechaToString() + this.horaFinToString());
+        informe.escribirContenido(this);
     }
 
     /**
@@ -186,6 +190,39 @@ public abstract class Reunion {
      * @return Información de acceso para la reunión
      */
     public abstract String getSitioReunion();
+    public ArrayList getNotas(){ return notas;}
+    public ArrayList getListaDeParticipantes(){ return listaDeEmpleadoAsistentes; }
+
+    public String fechaToString(){
+        String pattern = "dd/MM/yyyy";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String date = simpleDateFormat.format(fecha);
+        return date;
+    }
+    public String horaPrevistaToString(){
+        String pattern = "hh:mm:ss";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String horaPrevista = simpleDateFormat.format(Date.from(this.horaPrevista));
+        return horaPrevista;
+    }
+
+    public String duracionPrevistaToString(){
+        float duracionPrevista = (float) this.duracionPrevista.toSeconds();
+        return (duracionPrevista + "s");
+    }
+
+    public String horaInicioToString(){
+        String pattern = "hh:mm:ss";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String horaInicio = simpleDateFormat.format(Date.from(this.horaInicio));
+        return horaInicio;
+    }
+    public String horaFinToString(){
+        String pattern = "hh:mm:ss";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String horaFin = simpleDateFormat.format(Date.from(this.horaFin));
+        return horaFin;
+    }
 
     /**
      * Crea una nota a partir del tecto ingresado y la guarda
