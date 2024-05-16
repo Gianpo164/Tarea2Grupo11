@@ -24,7 +24,12 @@ public abstract class Reunion {
     private ArrayList<Empleado> listaDeEmpleadoAsistentes;
   
     /**
-     * Se crea una reunión, con la información correspondiente
+     * Se crea una reunión, con la información correspondiente y se invitan empleados
+     * @param f Fecha de la reunión
+     * @param horaP Hora prevista para la reunión
+     * @param duracionP Duración prevista de la reunión
+     * @param tipo Tipo de reunión
+     * @param listaDeE Lista de empleados a invitar
      */
     public Reunion(Date f, Instant horaP, Duration duracionP, int tipo, ArrayList<Empleado> listaDeE){
         fecha = f;
@@ -49,6 +54,11 @@ public abstract class Reunion {
             e.invitar(invitacion);
         }
     }
+
+    /**
+     * Registro de la asistencia a la reunión, además se determina el tipo de asistencia
+     * @param e Empleado que asistirá
+     */
     public void asistirReunion(Empleado e){
         if (Instant.now().isAfter(horaFin)){
         }else if (e.invitado && !Instant.now().isAfter(horaInicio) && !listaDeEmpleadoAsistentes.contains(e)) {
@@ -105,14 +115,15 @@ public abstract class Reunion {
     }
   
     /**
-     * Inicia la reunión, a partir de este punto las asisencias se consideran retrasos
+     * Devuelve la duración de la reunión
+     * @return Duración total
      */
     public float calcularTiempoReal(){
         return horaInicio.until(horaFin, ChronoUnit.SECONDS);//Posible modificacion para entregar informacion relevante al informe
     }
   
     /**
-     * Inicia la reunión, a partir de este punto las asisencias se consideran retrasos
+     * Inicia la reunión, a partir de este punto las asistencias se consideran retrasos
      */
     public void iniciar(){
         horaInicio = Instant.now();
