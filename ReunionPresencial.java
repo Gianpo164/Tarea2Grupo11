@@ -7,8 +7,8 @@ import java.util.Date;
 
 public class ReunionPresencial extends Reunion {
     private String sala;
-    public ReunionPresencial(Date f, Instant horaP, Duration duracionP, tipoReunion tipo, ArrayList<Empleado> listaDeE,String s){
-        super(f, horaP, duracionP, tipo, listaDeE);
+    public ReunionPresencial(Empleado org, Date f, Instant horaP, Duration duracionP, tipoReunion tipo, ArrayList<Empleado> listaDeE,String s){
+        super(org, f, horaP, duracionP, tipo, listaDeE);
         sala = s;
     }
     public String getEnlace(){

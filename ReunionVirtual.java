@@ -7,8 +7,8 @@ import java.util.Date;
 
 public class ReunionVirtual extends Reunion {
     private String enlace;
-    public ReunionVirtual(Date f, Instant horaP, Duration duracionP, tipoReunion tipo, ArrayList<Empleado> listaDeE,String enl){
-        super(f, horaP, duracionP, tipo, listaDeE);
+    public ReunionVirtual(Empleado org, Date f, Instant horaP, Duration duracionP, tipoReunion tipo, ArrayList<Empleado> listaDeE,String enl){
+        super(org, f, horaP, duracionP, tipo, listaDeE);
         enlace = enl;
     }
     public String getEnlace(){

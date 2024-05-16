@@ -16,7 +16,9 @@ public abstract class Reunion {
     private Duration duracionPrevista;
     private Instant horaInicio = Instant.MAX;
     private Instant horaFin = Instant.MAX;
+    private Empleado organizador;
     private tipoReunion tipoDeReunion;
+    private ArrayList<Nota> notas;
     private ArrayList<Empleado> listaDeInvitados;
     private ArrayList<Asistencia> listaDeAsistencias;
     private ArrayList<Retraso> listaDeRetraso;
@@ -26,21 +28,33 @@ public abstract class Reunion {
     /**
      * Se crea una reunión, con la información correspondiente
      */
-    public Reunion(Date f, Instant horaP, Duration duracionP, tipoReunion tipo, ArrayList<Empleado> listaDeE){
+    public Reunion(Empleado org, Date f, Instant horaP, Duration duracionP, tipoReunion tipo, ArrayList<Empleado> listaDeE){
         fecha = f;
         horaPrevista = horaP;
         duracionPrevista = duracionP;
+        organizador = org;
+        tipoDeReunion = tipo;
+        notas = new ArrayList<>();
         listaDeInvitados = listaDeE;
         listaDeAsistencias = new ArrayList<>();
         listaDeRetraso = new ArrayList<>();
         listaDeAusencias = new ArrayList<>();
         listaDeEmpleadoAsistentes = new ArrayList<>();
         Invitacion invitacion = new Invitacion(horaP);
-        tipoDeReunion = tipo;
         for (Empleado e : listaDeE){
             e.invitar(invitacion);
         }
     }
+
+    public Date getFecha() { return fecha; }
+    public Instant getHoraPrevista() { return horaPrevista; }
+    public Duration getDuracionPrevista() { return duracionPrevista; }
+    public Instant getHoraInicio() { return horaInicio; }
+    public Instant getHoraFin() { return horaFin; }
+    public Empleado getOrganizador() { return organizador; }
+    public tipoReunion getTipoDeReunion() {return tipoDeReunion; }
+
+
     public void asistirReunion(Empleado e){
         if (Instant.now().isAfter(horaFin)){
         }else if (e.invitado && !Instant.now().isAfter(horaInicio) && !listaDeEmpleadoAsistentes.contains(e)) {
