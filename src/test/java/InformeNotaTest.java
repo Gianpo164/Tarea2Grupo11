@@ -1,6 +1,7 @@
 import org.example.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -23,7 +24,7 @@ public class InformeNotaTest {
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
     @BeforeEach
-    void informeNotaTest() {
+    void informeNotaTest() throws FaltaParametroException{
         listaEmpleados = new ArrayList<>();
         e1 = new Empleado("1", "rutb butn", "zar", "rutb@example1.com");
         e2 = new Empleado("2", "alftu ren", "plve", "alftu@example2.com");
@@ -40,7 +41,7 @@ public class InformeNotaTest {
         listaEmpleados.add(e4);
         listaEmpleados.add(e5);
         listaEmpleados.addAll(D1.getEmpleados());
-        reunionV = new ReunionVirtual(e1, Date.from(Instant.now()),Instant.now(), Duration.of(90, ChronoUnit.SECONDS), tipoReunion.TECNICA,listaEmpleados,"test.test.test");
+        reunionV = new ReunionVirtual(e1, Date.from(Instant.now()),Instant.now(), Duration.of(90, ChronoUnit.SECONDS), tipoReunion.TECNICA, listaEmpleados,"test.test.test");
         for (int i = 0; i < 6; i++) {
             reunionV.asistirReunion(listaEmpleados.get(i));
         }
@@ -54,7 +55,7 @@ public class InformeNotaTest {
         reunionV.asistirReunion(listaEmpleados.get(6));
     }
     @Test
-    void InformeTest(){
+    void informeTest(){
         System.setOut(new PrintStream(outputStreamCaptor));
         reunionV.finalizar(true);
         Assertions.assertEquals("Informe creado", outputStreamCaptor.toString().trim());
@@ -64,4 +65,9 @@ public class InformeNotaTest {
         reunionV.finalizar(false);
         Assertions.assertEquals("Nota",nota.getContenido());
     }
+    @Test
+    void testNull()throws FaltaParametroException{
+        ReunionPresencial R2 = new ReunionPresencial(e1, Date.from(Instant.now()),Instant.now(), Duration.of(90, ChronoUnit.SECONDS), tipoReunion.MARKETING, listaEmpleados,"404");
+    }
+
 }
