@@ -34,7 +34,20 @@ public abstract class Reunion {
      * @param tipo Tipo de reunión
      * @param listaDeE Lista de empleados a invitar
      */
-    public Reunion(Empleado org, Date f, Instant horaP, Duration duracionP, tipoReunion tipo, ArrayList<Empleado> listaDeE){
+    public Reunion(Empleado org, Date f, Instant horaP, Duration duracionP, tipoReunion tipo, ArrayList<Empleado> listaDeE)throws FaltaParametroException{
+        if (org == null) {
+            throw new FaltaParametroException("Falta organizador");
+        } else if (f == null) {
+            throw new FaltaParametroException("Falta fecha");
+        } else if (horaP == null) {
+            throw new FaltaParametroException("Falta hora prevista");
+        } else if (duracionP == null || duracionP.isNegative()) {
+            throw new FaltaParametroException("Falta duracion prevista");
+        } else if (tipo == null) {
+            throw new FaltaParametroException("Falta tipo de reunion");
+        } else if (listaDeE == null || listaDeE.isEmpty()) {
+            throw new FaltaParametroException("Falta lista de empleados");
+        }
         fecha = f;
         horaPrevista = horaP;
         duracionPrevista = duracionP;
@@ -57,7 +70,7 @@ public abstract class Reunion {
      * @param e Empleado que asistirá
      */
     public void asistirReunion(Empleado e){
-        if (Instant.now().isAfter(horaFin)){
+        if (Instant.now().isAfter(horaFin) || e==null){
         }else if (e.invitado && !Instant.now().isAfter(horaInicio) && !listaDeEmpleadoAsistentes.contains(e)) {
             Asistencia a = new Asistencia(e);
             listaDeEmpleadoAsistentes.add(e);
