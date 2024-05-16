@@ -20,6 +20,7 @@ public class Empleado implements Invitable{
      * @param APELLIDOS Apellidos del empleado
      * @param NOMBRE Nombre del empleado
      * @param CORREO Correo del empleado
+     * @throws FaltaParametroException si alguno de los parametros es nulo
      */
     public Empleado (String ID, String APELLIDOS, String NOMBRE, String CORREO) throws FaltaParametroException {
         if (ID == null) {

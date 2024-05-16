@@ -33,6 +33,7 @@ public abstract class Reunion {
      * @param duracionP Duración prevista de la reunión
      * @param tipo Tipo de reunión
      * @param listaDeE Lista de empleados a invitar
+     * @throws FaltaParametroException si alguno de los parametros es nulo
      */
     public Reunion(Empleado org, Date f, Instant horaP, Duration duracionP, tipoReunion tipo, ArrayList<Empleado> listaDeE)throws FaltaParametroException{
         if (org == null) {
@@ -142,6 +143,7 @@ public abstract class Reunion {
   
     /**
      * Finaliza la reunión y crea el informe correspondiente
+     * @param generarInforme Valor que decide si se genera el informe
      */
     public void finalizar(boolean generarInforme){
         horaFin = Instant.now();

@@ -43,7 +43,7 @@ public class ReunionTest {
         }
         reunionV.iniciar();
         try {
-            Thread.sleep(1);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -61,27 +61,22 @@ public class ReunionTest {
     }
     @Test
     void testRetrasos(){
-        reunionV.finalizar(true);
+        reunionV.finalizar(false);
         Assertions.assertEquals(1, reunionV.obtenerRetrasos().size(),"lista de retrasos erronea");
     }
     @Test
     void testTotalAsistencia(){
-        reunionV.finalizar(true);
+        reunionV.finalizar(false);
         Assertions.assertEquals(7, reunionV.obtenerTotalAsistencia(), "Numero de asistentes erroneo");
     }
     @Test
     void testPorcentajeAsistencia(){
-        reunionV.finalizar(true);
+        reunionV.finalizar(false);
         Assertions.assertEquals((((float)7)/(float)10 * (float)100), reunionV.obtenerPorcentajeAsistencia(), "porcentaje erroneo");
     }
     @Test
     void testTiempoReal(){
-        try {
-            Thread.sleep(999);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        reunionV.finalizar(true);
+        reunionV.finalizar(false);
         Assertions.assertEquals(1, reunionV.calcularTiempoReal(),"tiempo erroneo");
     }
 }

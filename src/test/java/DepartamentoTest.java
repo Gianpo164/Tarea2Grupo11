@@ -1,5 +1,6 @@
 import org.example.Departamento;
 import org.example.Empleado;
+import org.example.FaltaParametroException;
 import org.example.Invitacion;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,7 +20,7 @@ public class DepartamentoTest {
     private Departamento D1;
 
     @BeforeEach
-    void metodosDeDepartamento() {
+    void metodosDeDepartamento() throws FaltaParametroException {
         e1 = new Empleado("1", "tur fir", "juan", "tur@example1.com");
         e2 = new Empleado("2", "alftu ren", "plve", "alftu@example2.com");
         e3 = new Empleado("3", "rutb butn", "zar", "rutb@example3.com");

@@ -20,6 +20,7 @@ public class ReunionVirtual extends Reunion {
      * @param tipo Tipo de reunión
      * @param listaDeE Lista de empleados a invitar
      * @param enl Enlace para ingresar a la reunión
+     * @throws FaltaParametroException si el enlace es nulo
      */
     public ReunionVirtual(Empleado org, Date f, Instant horaP, Duration duracionP, tipoReunion tipo, ArrayList<Empleado> listaDeE,String enl)throws FaltaParametroException{
         super(org, f, horaP, duracionP, tipo, listaDeE);
