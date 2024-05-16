@@ -26,7 +26,12 @@ public abstract class Reunion {
     private ArrayList<Empleado> listaDeEmpleadoAsistentes;
   
     /**
-     * Se crea una reunión, con la información correspondiente
+     * Se crea una reunión, con la información correspondiente y se invitan empleados
+     * @param f Fecha de la reunión
+     * @param horaP Hora prevista para la reunión
+     * @param duracionP Duración prevista de la reunión
+     * @param tipo Tipo de reunión
+     * @param listaDeE Lista de empleados a invitar
      */
     public Reunion(Empleado org, Date f, Instant horaP, Duration duracionP, tipoReunion tipo, ArrayList<Empleado> listaDeE){
         fecha = f;
@@ -46,20 +51,10 @@ public abstract class Reunion {
         }
     }
 
-    public Date getFecha() { return fecha; }
-    public Instant getHoraPrevista() { return horaPrevista; }
-    public Duration getDuracionPrevista() { return duracionPrevista; }
-    public Instant getHoraInicio() { return horaInicio; }
-    public Instant getHoraFin() { return horaFin; }
-    public Empleado getOrganizador() { return organizador; }
-    public tipoReunion getTipoDeReunion() {return tipoDeReunion; }
-    public abstract String getMedioReunion();
-    public abstract String getSitioReunion();
-    public void crearNota(String contenido){
-        Nota n = new Nota(contenido);
-        notas.add(n);
-    }
-
+    /**
+     * Registro de la asistencia a la reunión, además se determina el tipo de asistencia
+     * @param e Empleado que asistirá
+     */
     public void asistirReunion(Empleado e){
         if (Instant.now().isAfter(horaFin)){
         }else if (e.invitado && !Instant.now().isAfter(horaInicio) && !listaDeEmpleadoAsistentes.contains(e)) {
@@ -117,14 +112,15 @@ public abstract class Reunion {
     }
   
     /**
-     * Inicia la reunión, a partir de este punto las asisencias se consideran retrasos
+     * Devuelve la duración de la reunión
+     * @return Duración total
      */
     public float calcularTiempoReal(){
         return (float)horaInicio.until(horaFin, ChronoUnit.SECONDS);//Posible modificacion para entregar informacion relevante al informe
     }
   
     /**
-     * Inicia la reunión, a partir de este punto las asisencias se consideran retrasos
+     * Inicia la reunión, a partir de este punto las asistencias se consideran retrasos
      */
     public void iniciar(){
         horaInicio = Instant.now();
@@ -135,5 +131,18 @@ public abstract class Reunion {
      */
     public void finalizar(){
         horaFin = Instant.now();
+    }
+    public Date getFecha() { return fecha; }
+    public Instant getHoraPrevista() { return horaPrevista; }
+    public Duration getDuracionPrevista() { return duracionPrevista; }
+    public Instant getHoraInicio() { return horaInicio; }
+    public Instant getHoraFin() { return horaFin; }
+    public Empleado getOrganizador() { return organizador; }
+    public tipoReunion getTipoDeReunion() {return tipoDeReunion; }
+    public abstract String getMedioReunion();
+    public abstract String getSitioReunion();
+    public void crearNota(String contenido){
+        Nota n = new Nota(contenido);
+        notas.add(n);
     }
 }
