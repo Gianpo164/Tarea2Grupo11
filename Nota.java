@@ -15,7 +15,17 @@ public class Nota {
             contenido = nota;
         }
     }
+
+    /**
+     * Devuelve el contenido de la nota
+     * @return Texto contenido en la nota
+     */
     public String getContenido(){ return contenido; }
+
+    /**
+     * Establece el texto contenido en la nota
+     * @param c Texto que será guardado
+     */
     public void setContenido(String c){ contenido = c; }
 
 }

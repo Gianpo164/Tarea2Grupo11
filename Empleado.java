@@ -61,7 +61,7 @@ public class Empleado implements Invitable{
     }
 
     /**
-     * Devuelbe el nombre asociado al empleado
+     * Devuelve el nombre asociado al empleado
      * @return Nombre del empleado
      */
     public String getNombre() {

@@ -2,7 +2,6 @@ package org.example;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.time.Clock;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,6 +26,7 @@ public abstract class Reunion {
   
     /**
      * Se crea una reunión, con la información correspondiente y se invitan empleados
+     * @param org Empleado organizador de la reunión
      * @param f Fecha de la reunión
      * @param horaP Hora prevista para la reunión
      * @param duracionP Duración prevista de la reunión
@@ -132,15 +132,65 @@ public abstract class Reunion {
     public void finalizar(){
         horaFin = Instant.now();
     }
+
+    /**
+     * Devuelve la fecha de la reunión
+     * @return Fecha
+     */
     public Date getFecha() { return fecha; }
+
+    /**
+     * Devuelve el momento en que debería iniciar la reunión
+     * @return Momento previsto
+     */
     public Instant getHoraPrevista() { return horaPrevista; }
+
+    /**
+     * Devuelve el tiempo que debería durar la reunión
+     * @return Duración prevista
+     */
     public Duration getDuracionPrevista() { return duracionPrevista; }
+
+    /**
+     * Devuelve el momento en que inicia la reunión
+     * @return Momento de inicio
+     */
     public Instant getHoraInicio() { return horaInicio; }
+
+    /**
+     * Devuelve el momento en que finaliza la reunión
+     * @return Momento de fin
+     */
     public Instant getHoraFin() { return horaFin; }
+
+    /**
+     * Devuelve al empleado que organiza la reunión
+     * @return Empleado organizador
+     */
     public Empleado getOrganizador() { return organizador; }
+
+    /**
+     * Devuelve el tipo de reunión de la reunión
+     * @return Tipo de reunión
+     */
     public tipoReunion getTipoDeReunion() {return tipoDeReunion; }
+
+    /**
+     * Devuelve el formato establecido para la reunión
+     * @return Formato de la reunión
+     */
     public abstract String getMedioReunion();
+
+    /**
+     * Devuelve la información de acceso del la reunión, dependiendo del formato de reunión
+     * @return Información de acceso para la reunión
+     */
     public abstract String getSitioReunion();
+
+    /**
+     * Crea una nota a partir del tecto ingresado y la guarda
+     * @param contenido Texto para ingresar en la nota
+     */
     public void crearNota(String contenido){
         Nota n = new Nota(contenido);
         notas.add(n);

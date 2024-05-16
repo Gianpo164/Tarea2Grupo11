@@ -13,6 +13,7 @@ public class ReunionPresencial extends Reunion {
 
     /**
      * Se crea una reunión, con la información correspondiente y se invitan empleados
+     * @param org Empleado organizador de la reunión
      * @param f Fecha de la reunión
      * @param horaP Hora prevista para la reunión
      * @param duracionP Duración prevista de la reunión
@@ -24,6 +25,11 @@ public class ReunionPresencial extends Reunion {
         super(org, f, horaP, duracionP, tipo, listaDeE);
         sala = s;
     }
+
+    /**
+     * Devuelve el formato establecido para la reunión
+     * @return Formato de la reunión
+     */
     public String getMedioReunion(){ return "Presencial"; }
 
     /**
