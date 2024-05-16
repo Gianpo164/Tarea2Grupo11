@@ -8,4 +8,7 @@ public class Nota {
             contenido = nota;
         }
     }
+    public String getContenido(){ return contenido; }
+    public void setContenido(String c){ contenido = c; }
+
 }
