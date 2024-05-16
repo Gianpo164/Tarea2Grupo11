@@ -11,7 +11,6 @@ public class ReunionVirtual extends Reunion {
         super(org, f, horaP, duracionP, tipo, listaDeE);
         enlace = enl;
     }
-    public String getEnlace(){
-        return enlace;
-    }
+    public String getMedioReunion(){ return "Virtual"; }
+    public String getSitioReunion(){ return "El enlace es " + enlace; }
 }

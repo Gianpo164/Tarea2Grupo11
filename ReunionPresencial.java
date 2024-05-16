@@ -11,7 +11,6 @@ public class ReunionPresencial extends Reunion {
         super(org, f, horaP, duracionP, tipo, listaDeE);
         sala = s;
     }
-    public String getEnlace(){
-        return sala;
-    }
+    public String getMedioReunion(){ return "Presencial"; }
+    public String getSitioReunion(){ return "La sala es " + sala; }
 }

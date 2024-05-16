@@ -53,7 +53,8 @@ public abstract class Reunion {
     public Instant getHoraFin() { return horaFin; }
     public Empleado getOrganizador() { return organizador; }
     public tipoReunion getTipoDeReunion() {return tipoDeReunion; }
-
+    public abstract String getMedioReunion();
+    public abstract String getSitioReunion();
 
     public void asistirReunion(Empleado e){
         if (Instant.now().isAfter(horaFin)){
