@@ -29,25 +29,83 @@ public class Empleado implements Invitable{
     }
 
     /**
-     * Guarda el nombre del departamento al que pertenece el empleado
-     * @param d Nombre del departamento
+     * Devuelve la identificación asociada al empleado
+     * @return Identificación del empleado
      */
-    public void setDepartamento(String d){
-        departamento = d;
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * Establece la identififcación asociada al empleado
+     * @param id Identificación del empleado
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    /**
+     * Devuelve los apellidos asociados al empleado
+     * @return Apellidos del empleado
+     */
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    /**
+     * Establece los apellidos asociados al empleado
+     * @param apellidos Apellidos del empleado
+     */
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    /**
+     * Devuelbe el nombre asociado al empleado
+     * @return Nombre del empleado
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * Establece el nombre asociado al empleado
+     * @param nombre Nombre del empleado
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * Devuelve el correo asociado al empleado
+     * @return Correo del empleado
+     */
+    public String getCorreo() {
+        return correo;
+    }
+
+    /**
+     * Establece un correo para el empleado
+     * @param correo Correo del empleado
+     */
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     /**
      * Devuelve el nombre del departamento al que el empleado pertenece
      * @return Nombre del departamento
      */
-    public String getDepartamento(){ return departamento; }
+    public String getDepartamento() {
+        return departamento;
+    }
 
     /**
-     * Devuelve la ID del empleado
-     * @return Identificación del empleado
+     * Guarda el nombre del departamento al que pertenece el empleado
+     * @param d Nombre del departamento
      */
-    public String getId() {
-        return id;
+    public void setDepartamento(String d){
+        departamento = d;
     }
 
     /**
