@@ -16,7 +16,7 @@ public abstract class Reunion {
     private Duration duracionPrevista;
     private Instant horaInicio = Instant.MAX;
     private Instant horaFin = Instant.MAX;
-    private String tipoDeReunion;
+    private tipoReunion tipoDeReunion;
     private ArrayList<Empleado> listaDeInvitados;
     private ArrayList<Asistencia> listaDeAsistencias;
     private ArrayList<Retraso> listaDeRetraso;
@@ -26,25 +26,13 @@ public abstract class Reunion {
     /**
      * Se crea una reunión, con la información correspondiente
      */
-    public Reunion(Date f, Instant horaP, Duration duracionP, int tipo, ArrayList<Empleado> listaDeE){
+    public Reunion(Date f, Instant horaP, Duration duracionP, tipoReunion tipo, ArrayList<Empleado> listaDeE){
         fecha = f;
         horaPrevista = horaP;
         duracionPrevista = duracionP;
         listaDeInvitados = listaDeE;
         Invitacion invitacion = new Invitacion(horaP);
-        switch (tipo){
-            case 1:
-                tipoDeReunion = "TECNICA";
-                break;
-            case 2:
-                tipoDeReunion = "MARKETING";
-                break;
-            case 3:
-                tipoDeReunion = "OTRO";
-                break;
-            default:
-                break;
-        }
+        tipoDeReunion = tipo;
         for (Empleado e : listaDeE){
             e.invitar(invitacion);
         }
