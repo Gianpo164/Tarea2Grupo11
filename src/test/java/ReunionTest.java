@@ -20,7 +20,7 @@ public class ReunionTest {
     private ReunionVirtual reunionV;
 
     @BeforeEach
-    void inicializacion() {
+    void inicializacion() throws FaltaParametroException{
         listaEmpleados = new ArrayList<>();
         e1 = new Empleado("1", "tur fir", "juan", "tur@example1.com");
         e2 = new Empleado("2", "alftu ren", "plve", "alftu@example2.com");
