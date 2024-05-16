@@ -132,6 +132,8 @@ public abstract class Reunion {
      */
     public void finalizar(){
         horaFin = Instant.now();
+    }
+    public void crearInforme(){
         Informe informe = new Informe();
         informe.crearInforme(this.fechaToString() + this.horaFinToString());
         informe.escribirContenido(this);
