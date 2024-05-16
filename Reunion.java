@@ -130,14 +130,16 @@ public abstract class Reunion {
     /**
      * Finaliza la reunión y crea el informe correspondiente
      */
-    public void finalizar(){
+    public void finalizar(boolean generarInforme){
         horaFin = Instant.now();
-        String pattern = "yyyy-MM-dd_hh-mm-ss";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-        String horaPrevista = simpleDateFormat.format(Date.from(Instant.now()));
-        Informe informe = new Informe();
-        informe.crearInforme(horaPrevista);
-        informe.escribirContenido(this);
+        if (generarInforme) {
+            String pattern = "yyyy-MM-dd_hh-mm-ss";
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+            String horaPrevista = simpleDateFormat.format(Date.from(Instant.now()));
+            Informe informe = new Informe();
+            informe.crearInforme(horaPrevista);
+            informe.escribirContenido(this);
+        }
     }
 
     /**
