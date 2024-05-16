@@ -21,8 +21,11 @@ public class ReunionPresencial extends Reunion {
      * @param listaDeE Lista de empleados a invitar
      * @param s Sala donde se llevará acabo la reunión
      */
-    public ReunionPresencial(Empleado org, Date f, Instant horaP, Duration duracionP, tipoReunion tipo, ArrayList<Empleado> listaDeE,String s){
+    public ReunionPresencial(Empleado org, Date f, Instant horaP, Duration duracionP, tipoReunion tipo, ArrayList<Empleado> listaDeE,String s)throws FaltaParametroException{
         super(org, f, horaP, duracionP, tipo, listaDeE);
+        if (s == null){
+            throw new FaltaParametroException("Falta sala");
+        }
         sala = s;
     }
 
