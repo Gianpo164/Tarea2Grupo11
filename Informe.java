@@ -13,11 +13,16 @@ public class Informe {
     File informe;
 
     /**
-     * Crea un informe sobre la reunión
-     * @param x Valor para diferenciar cada informe
+     * Crea una instancia de Informe
      */
-    public void crearInforme(String x){
-        informe = new File("Informe_"+ x + ".txt");
+    public Informe() {}
+
+    /**
+     * Crea un informe sobre la reunión
+     * @param momentoCreacion Valor para diferenciar cada informe
+     */
+    public void crearInforme(String momentoCreacion){
+        informe = new File("Informe_"+ momentoCreacion + ".txt");
         try {
             if (informe.createNewFile()){
                 System.out.println("Informe creado");
