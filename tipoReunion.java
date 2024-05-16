@@ -19,9 +19,17 @@ public enum tipoReunion {
 
     private final String tipo;
 
+    /**
+     * @param tipo Tipo de reunión
+     */
     tipoReunion(String tipo){
         this.tipo = tipo;
     }
+
+    /**
+     * Devuelve el tipo de reunión
+     * @return Tipo de reunión
+     */
     public String getTipo(){ return tipo; }
 
 }

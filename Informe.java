@@ -5,11 +5,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
+/**
+ * Representación de un informe con la información de una reunión
+ */
 public class Informe {
 
     File informe;
 
+    /**
+     * Crea un informe sobre la reunión
+     * @param x Valor para diferenciar cada informe
+     */
     public void crearInforme(String x){
         informe = new File("Informe "+ x + ".txt");
         try {
@@ -23,6 +29,11 @@ public class Informe {
             System.out.println(ex.getMessage());
         }
     }
+
+    /**
+     * Traspasa la información de la reunión al informe
+     * @param r Reunión a la que le corresponde el informe
+     */
     public void escribirContenido(Reunion r){
         try {
             FileWriter contenido = new FileWriter(informe);

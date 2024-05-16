@@ -132,6 +132,12 @@ public abstract class Reunion {
      */
     public void finalizar(){
         horaFin = Instant.now();
+    }
+
+    /**
+     * Creación del informe corresponiente a esta reunión
+     */
+    public void crearInforme(){
         Informe informe = new Informe();
         informe.crearInforme(this.fechaToString() + this.horaFinToString());
         informe.escribirContenido(this);
@@ -190,15 +196,34 @@ public abstract class Reunion {
      * @return Información de acceso para la reunión
      */
     public abstract String getSitioReunion();
+
+    /**
+     * Devuelve la lista de notas relacionada con la reunión
+     * @return Lista de notas
+     */
     public ArrayList getNotas(){ return notas;}
+
+    /**
+     * Devuelve la lista de empleados que asistieron a la reunión
+     * @return Lista de empleados participantes
+     */
     public ArrayList getListaDeParticipantes(){ return listaDeEmpleadoAsistentes; }
 
+    /**
+     * Devuelve la fecha en formato de cadena de caracteres
+     * @return fecha en cadena de caracteres
+     */
     public String fechaToString(){
         String pattern = "dd/MM/yyyy";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         String date = simpleDateFormat.format(fecha);
         return date;
     }
+
+    /**
+     * Devuelve la hora prevista en formato de cadena de caracteres
+     * @return Hora prevista en cadena de caracteres
+     */
     public String horaPrevistaToString(){
         String pattern = "hh:mm:ss";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
@@ -206,17 +231,30 @@ public abstract class Reunion {
         return horaPrevista;
     }
 
+    /**
+     * Devuelve la duración prevista en formato de cadena de caracteres
+     * @return Duración prevista en cadena de caracteres
+     */
     public String duracionPrevistaToString(){
         float duracionPrevista = (float) this.duracionPrevista.toSeconds();
         return (duracionPrevista + "s");
     }
 
+    /**
+     * Devuelve la hora de inicio en formato de cadena de caracteres
+     * @return Hora de inicio en cadena de caracteres
+     */
     public String horaInicioToString(){
         String pattern = "hh:mm:ss";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         String horaInicio = simpleDateFormat.format(Date.from(this.horaInicio));
         return horaInicio;
     }
+
+    /**
+     * Devuelve la hora de fin en formato de cadena de caracteres
+     * @return Hora de fin en cadena de caracteres
+     */
     public String horaFinToString(){
         String pattern = "hh:mm:ss";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
