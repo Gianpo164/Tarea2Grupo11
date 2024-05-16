@@ -55,6 +55,10 @@ public abstract class Reunion {
     public tipoReunion getTipoDeReunion() {return tipoDeReunion; }
     public abstract String getMedioReunion();
     public abstract String getSitioReunion();
+    public void crearNota(String contenido){
+        Nota n = new Nota(contenido);
+        notas.add(n);
+    }
 
     public void asistirReunion(Empleado e){
         if (Instant.now().isAfter(horaFin)){
