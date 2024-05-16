@@ -11,6 +11,7 @@ import java.util.Date;
 public class ReunionVirtual extends Reunion {
     private String enlace;
 
+
     /**
      * Se crea una reunión, con la información correspondiente y se invitan empleados
      * @param f Fecha de la reunión
@@ -20,7 +21,7 @@ public class ReunionVirtual extends Reunion {
      * @param listaDeE Lista de empleados a invitar
      * @param enl Enlace para ingresar a la reunión
      */
-    public ReunionVirtual(Date f, Instant horaP, Duration duracionP, int tipo, ArrayList<Empleado> listaDeE,String enl){
+    public ReunionVirtual(Date f, Instant horaP, Duration duracionP, tipoReunion tipo, ArrayList<Empleado> listaDeE,String enl){
         super(f, horaP, duracionP, tipo, listaDeE);
         enlace = enl;
     }

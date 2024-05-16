@@ -20,7 +20,7 @@ public class ReunionPresencial extends Reunion {
      * @param listaDeE Lista de empleados a invitar
      * @param s Sala donde se llevará acabo la reunión
      */
-    public ReunionPresencial(Date f, Instant horaP, Duration duracionP, int tipo, ArrayList<Empleado> listaDeE,String s){
+    public ReunionPresencial(Date f, Instant horaP, Duration duracionP, tipoReunion tipo, ArrayList<Empleado> listaDeE,String s){
         super(f, horaP, duracionP, tipo, listaDeE);
         sala = s;
     }

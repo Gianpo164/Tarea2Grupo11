@@ -43,6 +43,14 @@ public class Departamento implements Invitable {
     }
 
     /**
+     * Decuelve la lista de empleados del departamento
+     * @return Lista de empleados
+     */
+    public ArrayList<Empleado> getEmpleados() {
+        return Empleados;
+    }
+
+    /**
      * Devuelve el total de empleados pertenecientes al departamento
      * @return Total de empleados
      */
