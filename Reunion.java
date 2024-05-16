@@ -64,9 +64,19 @@ public abstract class Reunion {
     public ArrayList obtenerRetrasos(){
         return listaDeRetraso;
     }
-    public int obtenerTotalAsistencia(){}
-    public float obtenerPorcentajeAsistencia(){}
-    public float calcularTiempoReal(){}
-    public void iniciar(){}
-    public void finalizar(){}
+    public int obtenerTotalAsistencia(){
+        return obtenerAsistencias().size();
+    }
+    public float obtenerPorcentajeAsistencia(){
+        return (((obtenerAsistencias().size() + obtenerRetrasos().size()) / listaDeInvitados.size()) * 100);
+    }
+    public float calcularTiempoReal(){
+        return horaInicio.until(horaFin, ChronoUnit.SECONDS);//Posible modificacion para entregar informacion relevante al informe
+    }
+    public void iniciar(){
+        horaInicio = Instant.now();
+    }
+    public void finalizar(){
+        horaFin = Instant.now();
+    }
 }
