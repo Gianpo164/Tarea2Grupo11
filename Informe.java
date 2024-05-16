@@ -17,7 +17,7 @@ public class Informe {
      * @param x Valor para diferenciar cada informe
      */
     public void crearInforme(String x){
-        informe = new File("Informe "+ x + ".txt");
+        informe = new File("Informe_"+ x + ".txt");
         try {
             if (informe.createNewFile()){
                 System.out.println("Informe creado");

@@ -138,8 +138,11 @@ public abstract class Reunion {
      * Creación del informe corresponiente a esta reunión
      */
     public void crearInforme(){
+        String pattern = "yyyy-MM-dd_hh-mm-ss";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String horaPrevista = simpleDateFormat.format(Date.from(Instant.now()));
         Informe informe = new Informe();
-        informe.crearInforme(this.fechaToString() + this.horaFinToString());
+        informe.crearInforme(horaPrevista);
         informe.escribirContenido(this);
     }
 
