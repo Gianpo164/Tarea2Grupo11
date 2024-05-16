@@ -16,7 +16,9 @@ public abstract class Reunion {
     private Duration duracionPrevista;
     private Instant horaInicio = Instant.MAX;
     private Instant horaFin = Instant.MAX;
+    private Empleado organizador;
     private tipoReunion tipoDeReunion;
+    private ArrayList<Nota> notas;
     private ArrayList<Empleado> listaDeInvitados;
     private ArrayList<Asistencia> listaDeAsistencias;
     private ArrayList<Retraso> listaDeRetraso;
@@ -31,13 +33,19 @@ public abstract class Reunion {
      * @param tipo Tipo de reunión
      * @param listaDeE Lista de empleados a invitar
      */
-    public Reunion(Date f, Instant horaP, Duration duracionP, tipoReunion tipo, ArrayList<Empleado> listaDeE){
+    public Reunion(Empleado org, Date f, Instant horaP, Duration duracionP, tipoReunion tipo, ArrayList<Empleado> listaDeE){
         fecha = f;
         horaPrevista = horaP;
         duracionPrevista = duracionP;
-        listaDeInvitados = listaDeE;
-        Invitacion invitacion = new Invitacion(horaP);
+        organizador = org;
         tipoDeReunion = tipo;
+        notas = new ArrayList<>();
+        listaDeInvitados = listaDeE;
+        listaDeAsistencias = new ArrayList<>();
+        listaDeRetraso = new ArrayList<>();
+        listaDeAusencias = new ArrayList<>();
+        listaDeEmpleadoAsistentes = new ArrayList<>();
+        Invitacion invitacion = new Invitacion(horaP);
         for (Empleado e : listaDeE){
             e.invitar(invitacion);
         }
@@ -75,7 +83,8 @@ public abstract class Reunion {
     public ArrayList obtenerAusencias(){
         listaDeAusencias.clear();
         listaDeAusencias.addAll(listaDeInvitados);
-        return listaDeAsistencias;
+        listaDeAusencias.removeAll(listaDeEmpleadoAsistentes);
+        return listaDeAusencias;
     }
   
     /**
@@ -91,7 +100,7 @@ public abstract class Reunion {
      * @return Cantidad de asistentes
      */
     public int obtenerTotalAsistencia(){
-        return obtenerAsistencias().size();
+        return obtenerAsistencias().size() + obtenerRetrasos().size();
     }
   
     /**
@@ -99,7 +108,7 @@ public abstract class Reunion {
      * @return Porcentaje de asistencia
      */
     public float obtenerPorcentajeAsistencia(){
-        return (((obtenerAsistencias().size() + obtenerRetrasos().size()) / listaDeInvitados.size()) * 100);
+        return (((float)(obtenerAsistencias().size() + obtenerRetrasos().size()) / (float)listaDeInvitados.size()) * (float)100);
     }
   
     /**
@@ -107,7 +116,7 @@ public abstract class Reunion {
      * @return Duración total
      */
     public float calcularTiempoReal(){
-        return horaInicio.until(horaFin, ChronoUnit.SECONDS);//Posible modificacion para entregar informacion relevante al informe
+        return (float)horaInicio.until(horaFin, ChronoUnit.SECONDS);//Posible modificacion para entregar informacion relevante al informe
     }
   
     /**
@@ -122,5 +131,18 @@ public abstract class Reunion {
      */
     public void finalizar(){
         horaFin = Instant.now();
+    }
+    public Date getFecha() { return fecha; }
+    public Instant getHoraPrevista() { return horaPrevista; }
+    public Duration getDuracionPrevista() { return duracionPrevista; }
+    public Instant getHoraInicio() { return horaInicio; }
+    public Instant getHoraFin() { return horaFin; }
+    public Empleado getOrganizador() { return organizador; }
+    public tipoReunion getTipoDeReunion() {return tipoDeReunion; }
+    public abstract String getMedioReunion();
+    public abstract String getSitioReunion();
+    public void crearNota(String contenido){
+        Nota n = new Nota(contenido);
+        notas.add(n);
     }
 }

@@ -20,16 +20,15 @@ public class ReunionPresencial extends Reunion {
      * @param listaDeE Lista de empleados a invitar
      * @param s Sala donde se llevará acabo la reunión
      */
-    public ReunionPresencial(Date f, Instant horaP, Duration duracionP, tipoReunion tipo, ArrayList<Empleado> listaDeE,String s){
-        super(f, horaP, duracionP, tipo, listaDeE);
+    public ReunionPresencial(Empleado org, Date f, Instant horaP, Duration duracionP, tipoReunion tipo, ArrayList<Empleado> listaDeE,String s){
+        super(org, f, horaP, duracionP, tipo, listaDeE);
         sala = s;
     }
+    public String getMedioReunion(){ return "Presencial"; }
 
     /**
      * Devuelve la sala donde se llevará acabo la reunión
      * @return Sala de la reunión
      */
-    public String getEnlace(){
-        return sala;
-    }
+    public String getSitioReunion(){ return "La sala es " + sala; }
 }
