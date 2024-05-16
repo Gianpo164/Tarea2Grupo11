@@ -29,6 +29,26 @@ public class Empleado implements Invitable{
     }
 
     /**
+     * Devuelve la ID del empleado
+     * @return Identificación del empleado
+     */
+    public String getId() {
+        return id;
+    }
+    public void setId(String id){this.id = id; }
+    public String getApellidos() {
+        return apellidos;
+    }
+    public void setApellidos(String apellidos){this.apellidos = apellidos; }
+    public String getNombre() {
+        return nombre;
+    }
+    public void setNombre(String nombre){this.nombre = nombre; }
+    public String getCorreo() {
+        return correo;
+    }
+    public void setCorreo(String correo){this.correo = correo; }
+    /**
      * Guarda el nombre del departamento al que pertenece el empleado
      * @param d Nombre del departamento
      */
@@ -42,13 +62,10 @@ public class Empleado implements Invitable{
      */
     public String getDepartamento(){ return departamento; }
 
-    /**
-     * Devuelve la ID del empleado
-     * @return Identificación del empleado
-     */
-    public String getId() {
-        return id;
-    }
+
+
+
+
 
     /**
      * Invita al empleado a una reunión y cambia su estado de inivitación
